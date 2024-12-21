@@ -1,16 +1,19 @@
 import React, { useState, useEffect } from 'react';
+import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import ProductSlider from './components/ProductSlider';
 import Guarantees from './components/Guarantees';
+import MainPage from './components/MainPage';
+import About from './components/About';
+import NotFound from './components/404';
 import './components/shop.css';
 
 export default function App() {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [cart, setCart] = useState([]); // Состояние для корзины
+  const [cart, setCart] = useState([]);
 
-  // Имитация загрузки данных
   useEffect(() => {
     setTimeout(() => {
       setProducts([
@@ -31,30 +34,39 @@ export default function App() {
     }, 2000);
   }, []);
 
-  // Добавление товара в корзину
   const addToCart = (product) => {
     setCart((prevCart) => [...prevCart, product]);
   };
 
-  // Вывод сообщения во время загрузки
   if (loading) return <p>Загрузка...</p>;
 
   return (
-    <div className="App">
-      {/* Хедер */}
-      <Header />
+    <Router>
+      <div className="App">
+        {/* Хедер */}
+        <Header />
 
-      {/* Основной контент */}
-      <main>
-        {/* Слайдер товаров */}
-        <ProductSlider products={products} onAddToCart={addToCart} />
+        {/* Маршруты */}
+        <main>
+          <Routes>
+            <Route path="/home" element={<MainPage />} />
+            <Route path="/about" element={<About />} />
+            <Route path="*" element={<NotFound />} />
+            <Route
+              path="/"
+              element={
+                <>
+                  <ProductSlider products={products} onAddToCart={addToCart} />
+                  <Guarantees />
+                </>
+              }
+            />
+          </Routes>
+        </main>
 
-        {/* Блок гарантий */}
-        <Guarantees />
-      </main>
-
-      {/* Футер */}
-      <Footer />
-    </div>
+        {/* Футер */}
+        <Footer />
+      </div>
+    </Router>
   );
 }

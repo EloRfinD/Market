@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom'; // Импортируем Link
 import './shop.css'; // Стили для Header
 
 export default function Header() {
@@ -14,12 +15,12 @@ export default function Header() {
         </div>
         <nav>
           <ul>
-            <li><a href="#">Главная</a></li>
+            <li><Link to="/home">Главная</Link></li>
             <li>
               Категории
               <img src="\images\Vector.svg" alt="Стрелочка" className="image_category" />
             </li>
-            <li><a href="#">О Нас</a></li>
+            <li><Link to="/about">О Нас</Link></li>
             <li><a href="#">Контакты</a></li>
           </ul>
         </nav>

@@ -590,3 +590,34 @@ body{
     padding-top: 20px;
     margin-top: 20px;
 }
+
+.not-found {
+    text-align: center;
+    margin-top: 50px;
+    font-family: Arial, sans-serif;
+  }
+  
+  .not-found h1 {
+    font-size: 3rem;
+    color: #ff5733;
+  }
+  
+  .not-found p {
+    font-size: 1.2rem;
+    color: #333;
+  }
+  
+  .home-link {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: #ff5733;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+  }
+  
+  .home-link:hover {
+    background-color: #e74c3c;
+  }
+  
